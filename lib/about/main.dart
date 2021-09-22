@@ -4,7 +4,8 @@ import '../constants.dart';
 import '../widgets.dart';
 
 Future<void> showLicense() async {
-  String license_url = "https://github.com/TrentSPalmer/trentreads/blob/master/LICENSE";
+  String license_url =
+      "https://github.com/TrentSPalmer/trentreads/blob/master/LICENSE";
   if (await canLaunch(license_url)) {
     await launch(license_url);
   } else {
@@ -18,6 +19,7 @@ class AboutTrentReads extends StatelessWidget {
     Future<void> showOtherLicenses() async {
       showLicensePage(context: context);
     }
+
     return Scaffold(
       backgroundColor: appColors.peacockBlue,
       appBar: AppBar(
@@ -25,7 +27,10 @@ class AboutTrentReads extends StatelessWidget {
       ),
       body: Column(
         children: [
-          functionTile("License", showLicense,),
+          functionTile(
+            "License",
+            showLicense,
+          ),
           functionTile("Other Licenses", showOtherLicenses),
           Expanded(
             child: Container(),
