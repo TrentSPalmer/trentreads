@@ -1,32 +1,32 @@
 import 'package:flutter_test/flutter_test.dart';
-
 import '../lib/database/data_classes.dart';
+import '../lib/home/feeds.dart';
+
 import '../lib/database/database_helper.dart';
-import '../lib/home/home.dart';
 import '../lib/main.dart';
 
 
 void feedListReloadsCorrectly(String _testDesc) =>
     testWidgets(_testDesc, (tester) async {
       await tester.pumpWidget(MyApp());
-      final MyHomePageState myHomePageState =
-          tester.state(find.byType(MyHomePage));
-      expect(myHomePageState.feedList.length == 0, true);
+      final FeedState myFeedState =
+          tester.state(find.byType(FeedWidget));
+      expect(myFeedState.feedList.length == 0, true);
 
       int i = 0;
-      while ((myHomePageState.feedList.length == 0) && (i < 10)) {
+      while ((myFeedState.feedList.length == 0) && (i < 10)) {
         await tester.pumpAndSettle();
         i++;
       }
-      int _currentFeedListLength = myHomePageState.feedList.length;
+      int _currentFeedListLength = myFeedState.feedList.length;
       final DatabaseHelper dbHelper = DatabaseHelper.instance;
       String _deletedFeedTitle = await dbHelper.deleteFeed(1);
-      await myHomePageState.reloadFeeds();
+      await myFeedState.reloadFeeds();
       await tester.pumpAndSettle();
-      expect((myHomePageState.feedList.length == (_currentFeedListLength - 1)),
+      expect((myFeedState.feedList.length == (_currentFeedListLength - 1)),
           true);
       List<String> _listTitles = [];
-      myHomePageState.feedList.forEach((ScrollableFeed x) {
+      myFeedState.feedList.forEach((ScrollableFeed x) {
         _listTitles.add(x.title);
       });
       print("$_deletedFeedTitle was deleted.");
