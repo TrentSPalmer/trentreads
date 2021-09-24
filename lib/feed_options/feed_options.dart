@@ -123,6 +123,7 @@ class FeedOptionsState extends State<FeedOptions> {
                   children: [
                     Text(
                       widget.feedDesc,
+                      key: Key('feed_description_title'),
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,

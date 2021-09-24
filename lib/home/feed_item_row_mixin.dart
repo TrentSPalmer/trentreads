@@ -41,6 +41,7 @@ abstract class FeedItemRowMixin<T extends StatefulWidget> extends FuncMixin<T> {
         vertical: 3.0,
       ),
       child: Container(
+        key: Key('inkwell_$itemNo'),
         decoration: myBoxDecoration(appColors.ivory),
         child: Material(
           color: Colors.transparent,
