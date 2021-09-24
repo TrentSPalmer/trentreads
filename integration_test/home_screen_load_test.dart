@@ -50,10 +50,8 @@ void homeScreenLoadTest(String _testDesc) =>
           await tester.pumpAndSettle();
           j++;
           itemImageWidget = itemImageFinder.evaluate().single.widget as Widget;
-          print(itemImageWidget.runtimeType);
         }
         Image itemImage = itemImageFinder.evaluate().single.widget as Image;
-        print(itemImage.image);
         expect(itemImage.image == feedsNetworkImages[i], true);
       }
 
