@@ -61,6 +61,7 @@ abstract class EpisodeItemRowMixin<T extends StatefulWidget>
                           height: 72,
                           child: (scrollableEpisode.imageUrl.length > 0)
                               ? ItemImage(
+                                  key: Key('item_image_$itemNo'),
                                   imageUrl: scrollableEpisode.imageUrl,
                                   imageFileName:
                                       scrollableEpisode.imageFileName,

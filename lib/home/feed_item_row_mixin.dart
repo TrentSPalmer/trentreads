@@ -18,7 +18,8 @@ abstract class FeedItemRowMixin<T extends StatefulWidget> extends FuncMixin<T> {
     );
   }
 
-  Future<void> goToFeedOptions(String _title, String _desc, int _fid, String _imageDesc) async {
+  Future<void> goToFeedOptions(
+      String _title, String _desc, int _fid, String _imageDesc) async {
     await Navigator.push(
       context,
       MaterialPageRoute(
@@ -61,6 +62,7 @@ abstract class FeedItemRowMixin<T extends StatefulWidget> extends FuncMixin<T> {
                     height: 72,
                     child: (scrollableFeed.imageUrl.length > 0)
                         ? ItemImage(
+                            key: Key('item_image_$itemNo'),
                             imageUrl: scrollableFeed.imageUrl,
                             imageFileName: scrollableFeed.imageFileName,
                             imageFileSize: scrollableFeed.imageFileSize,

@@ -45,25 +45,29 @@ class ItemImageState extends State<ItemImage> {
 
   @override
   Widget build(BuildContext context) {
+    String keyString = widget.key.toString();
+    String imageKey = keyString.substring(8, keyString.length - 3);
     if (widget.imageUrl.length > 0 &&
         _imageUrl == 'none' &&
         _localImageFile == 'none') {
       _resetImageUrl();
     }
     if (_imageUrl == 'none' && _localImageFile == 'none') {
-      return Container();
+      return Container(key: Key(imageKey),);
     } else {
       if (_localImageFile == 'none') {
         return Image.network(
           _imageUrl,
           width: 64,
           height: 64,
+          key: Key(imageKey),
         );
       } else {
         return Image.file(
           File(_localImageFile),
           width: 64,
           height: 64,
+          key: Key(imageKey),
         );
       }
     }
