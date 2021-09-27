@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:trentreads/database/data_classes.dart';
 import '../lib/main.dart';
 import '../lib/home/feeds.dart';
 import 'package:flutter_test/flutter_test.dart';

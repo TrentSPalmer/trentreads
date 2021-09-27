@@ -57,6 +57,7 @@ class FeedState extends FeedItemRowMixin<FeedWidget> {
         title: Text('Feeds'),
         actions: [
           IconButton(
+            key: Key('feed_page_settings_icon'),
             icon: Icon(Icons.settings),
             onPressed: () async {
               await Navigator.push(

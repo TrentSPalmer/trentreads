@@ -4,6 +4,7 @@ import 'about_feed_load_test.dart';
 import 'feedlist_needs_refreshing.dart';
 import 'feedlist_reloads_correctly_test.dart';
 import 'home_screen_load_test.dart';
+import 'setting_screen_loadtest.dart';
 
 final String feedsLastUpdatedAt = 'feedsLastUpdatedAt';
 
@@ -17,6 +18,7 @@ void main() {
     homeScreenLoadTest('HomeScreen Load Test');
     feedListNeedsRefreshing('FeedList Needs Refreshing Test');
     aboutFeedsLoadTest("About Feeds Load Test");
+    settingScreenLoadTest("Setting Screen Load Test");
     feedListReloadsCorrectly('Feedlist Reloads Correctly Test');
   });
 }

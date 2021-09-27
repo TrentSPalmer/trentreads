@@ -178,6 +178,7 @@ Row infoTile(String textContent) {
 
 Row navTile(BuildContext context, Widget destination, String textContent) {
   return Row(
+    key: Key('nav_tile_for_$textContent'),
     children: [
       Expanded(
         child: Padding(
