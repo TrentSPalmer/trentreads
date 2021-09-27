@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
+import 'package:trentreads/database/data_classes.dart';
 import '../lib/main.dart';
 import '../lib/home/feeds.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -14,13 +16,39 @@ void aboutFeedsLoadTest(String _testDesc) =>
         await tester.pumpAndSettle();
         i++;
       }
-
-      Finder inkWell0Finder = find.byKey(Key('inkwell_0'));
-      expect(inkWell0Finder, findsOneWidget);
-      await tester.tap(find.byKey(Key('inkwell_0')));
-      await tester.pumpAndSettle();
-      Finder feed0DescTitleFinder = find.byKey(Key('feed_description_title'));
-      expect(feed0DescTitleFinder, findsOneWidget);
-      Text feed0DescTitle = feed0DescTitleFinder.evaluate().single.widget as Text;
-      expect(feed0DescTitle.data == 'Short Stories By Mark Twain', true);
+      int end = myFeedState.feedList.length;
+      for (int i = 0; i < end; i++) {
+        await findAndTapAboutFeedInkWell(i, tester);
+        await testFeedDesc(i, tester, myFeedState.feedList[i].desc);
+        await testFeedImageDesc(i, tester, myFeedState.feedList[i].imageDesc);
+        await clickBackButton(tester);
+      }
     });
+
+Future<void> clickBackButton(WidgetTester tester) async {
+  Finder backButtonFinder = find.byType(BackButton);
+  expect(backButtonFinder, findsOneWidget);
+  await tester.tap(find.byType(BackButton));
+  await tester.pumpAndSettle();
+}
+
+Future<void> testFeedImageDesc(int i, WidgetTester tester, String _feedImageDesc) async {
+  Finder feediImageDescFinder = find.byKey(Key('feed_image_description'));
+  expect(feediImageDescFinder, findsOneWidget);
+  Html feediImageDesc = feediImageDescFinder.evaluate().single.widget as Html;
+  expect(feediImageDesc.data == _feedImageDesc, true);
+}
+
+Future<void> testFeedDesc(int i, WidgetTester tester, String _feedDesc) async {
+  Finder feediDescFinder = find.byKey(Key('feed_description'));
+  expect(feediDescFinder, findsOneWidget);
+  Text feediDesc = feediDescFinder.evaluate().single.widget as Text;
+  expect(feediDesc.data == _feedDesc, true);
+}
+
+Future<void> findAndTapAboutFeedInkWell(int i, WidgetTester tester) async {
+  Finder inkWelliFinder = find.byKey(Key('inkwell_$i'));
+  expect(inkWelliFinder, findsOneWidget);
+  await tester.tap(find.byKey(Key('inkwell_$i')));
+  await tester.pumpAndSettle();
+}

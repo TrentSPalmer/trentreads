@@ -123,13 +123,14 @@ class FeedOptionsState extends State<FeedOptions> {
                   children: [
                     Text(
                       widget.feedDesc,
-                      key: Key('feed_description_title'),
+                      key: Key('feed_description'),
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
                     Html(
+                        key: Key('feed_image_description'),
                         data: widget.feedImageDesc,
                         onLinkTap: (String? url,
                             RenderContext context,
