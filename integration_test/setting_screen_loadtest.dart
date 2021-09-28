@@ -15,7 +15,7 @@ void settingScreenLoadTest(String _testDesc) =>
         i++;
       }
       await goToSettingsPage(tester);
-      await verifyAppBarTitle(tester);
+      await verifyAppBarTitle(tester, "Settings");
       await verifySettingsColumn(tester,
           numTiles: settingNavTilesStringList.length);
       await verifyNavTiles(tester, settingNavTilesStringList);
@@ -53,7 +53,7 @@ Future<void> verifySettingsColumn(WidgetTester tester,
   expect(columnChildrenFinder, findsNWidgets(numTiles));
 }
 
-Future<void> verifyAppBarTitle(WidgetTester tester) async {
+Future<void> verifyAppBarTitle(WidgetTester tester, String _title) async {
   Finder appBarFinder = find.byType(AppBar);
   expect(appBarFinder, findsOneWidget);
   AppBar settingsAppBar = appBarFinder.evaluate().single.widget as AppBar;
@@ -64,7 +64,7 @@ Future<void> verifyAppBarTitle(WidgetTester tester) async {
   expect(settingsAppBarTitleTextFinder, findsOneWidget);
   Text settingsAppBarTitleText =
       settingsAppBarTitleTextFinder.evaluate().single.widget as Text;
-  expect(settingsAppBarTitleText.data == 'Settings', true);
+  expect(settingsAppBarTitleText.data == _title, true);
 }
 
 Future<void> goToSettingsPage(WidgetTester tester) async {

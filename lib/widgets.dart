@@ -46,6 +46,7 @@ Padding homeButton(BuildContext context, int _numPops) {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
+          key: Key('home_button_ink_well'),
           onTap: () async {
             if (_numPops == 1) {
               Navigator.of(context).pop();
@@ -79,6 +80,7 @@ Padding okButton(BuildContext context, int _numPops) {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
+          key: Key('ok_button_ink_well'),
           onTap: () async {
             if (_numPops == 1) {
               Navigator.of(context).pop();

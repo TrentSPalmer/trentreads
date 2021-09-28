@@ -17,8 +17,8 @@ enum StorageDev { internal, external }
 
 class StorageSettingState extends State<StorageSetting> {
   StorageDev? _storageDev = StorageDev.internal;
-  bool _multipleDirs = false;
-  List<String> _storDirPaths = [];
+  bool multipleDirs = false;
+  List<String> storDirPaths = [];
 
   // String _selectedStorageDir = '';
   double _externalFree = 0.0;
@@ -36,14 +36,15 @@ class StorageSettingState extends State<StorageSetting> {
       body: Column(
         children: [
           _internalSettingItem(),
-          if (_multipleDirs) ...[
+          if (multipleDirs) ...[
             _settingItem(
                 _settingItemTitle(
-                  _storDirPaths[1],
+                  storDirPaths[1],
                   _externalFree,
                   _externalTotal,
                 ),
-                StorageDev.external),
+                StorageDev.external,
+                "external_storage_device"),
           ],
           Expanded(
             child: Container(),
@@ -65,11 +66,12 @@ class StorageSettingState extends State<StorageSetting> {
   Padding _internalSettingItem() {
     return _settingItem(
         _settingItemTitle(
-          _storDirPaths.length > 0 ? _storDirPaths[0] : "waiting for devices",
+          storDirPaths.length > 0 ? storDirPaths[0] : "waiting for devices",
           _internalFree,
           _internalTotal,
         ),
-        StorageDev.internal);
+        StorageDev.internal,
+        "internal_storage_device");
   }
 
   Text _settingItemTitle(String _dev, double _free, double _total) {
@@ -80,7 +82,7 @@ class StorageSettingState extends State<StorageSetting> {
     return Text("$_devString\n$_space");
   }
 
-  Padding _settingItem(Text _title, StorageDev _value) {
+  Padding _settingItem(Text _title, StorageDev _value, String _key) {
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: 6.0,
@@ -91,6 +93,7 @@ class StorageSettingState extends State<StorageSetting> {
         child: Padding(
           padding: EdgeInsets.all(12.0),
           child: RadioListTile<StorageDev>(
+            key: Key('${_key}_radio_list_tile'),
             title: _title,
             value: _value,
             groupValue: _storageDev,
@@ -108,8 +111,8 @@ class StorageSettingState extends State<StorageSetting> {
   }
 
   Future<void> _updateStoragePref(StorageDev? _sDev) async {
-    if (_sDev != null && _storDirPaths.length > 1) {
-      String _path = _storDirPaths[_sDev == StorageDev.internal ? 0 : 1];
+    if (_sDev != null && storDirPaths.length > 1) {
+      String _path = storDirPaths[_sDev == StorageDev.internal ? 0 : 1];
       await setStoragePref(_path);
     }
   }
@@ -120,14 +123,14 @@ class StorageSettingState extends State<StorageSetting> {
           if (_inTotal != null)
             {
               setState(() {
-                _multipleDirs = true;
-                _storDirPaths = _sdPaths;
+                multipleDirs = true;
+                storDirPaths = _sdPaths;
                 // _selectedStorageDir = _selectedStorDir;
                 _externalFree = _exFree;
                 _externalTotal = _exTotal;
                 _internalFree = _inFree;
                 _internalTotal = _inTotal;
-                _storageDev = _selectedStorDir == _storDirPaths[0]
+                _storageDev = _selectedStorDir == storDirPaths[0]
                     ? StorageDev.internal
                     : StorageDev.external;
               })
@@ -178,7 +181,7 @@ class StorageSettingState extends State<StorageSetting> {
           if (_storageDirs != null)
             {
               setState(() {
-                _storDirPaths = _storageDirs
+                storDirPaths = _storageDirs
                     .map((Directory _dir) =>
                         _dir.path.substring(0, _dir.path.length - 5))
                     .toList();
