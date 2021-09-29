@@ -104,7 +104,7 @@ class GlobalDownLoadSettingsState extends State<GlobalDownLoadSettings> {
     String gedlX =
         "Enable Downloads to Local Storage For All Feeds Specifically?";
     String gedlY =
-        " ($numDownLoadEnabledFeeds of $numFeeds feeds are currrently enabled)";
+        " ($numDownLoadEnabledFeeds of $numFeeds feeds are currently enabled)";
     return Scaffold(
       backgroundColor: appColors.peacockBlue,
       appBar: AppBar(

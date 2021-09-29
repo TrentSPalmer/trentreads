@@ -112,6 +112,7 @@ Padding okButton(BuildContext context, int _numPops) {
 Padding switchTile(
     String textContent, bool _currentVal, Function(bool) _onChanged) {
   return Padding(
+    key: Key('switch_tile_for_$textContent'),
     padding: EdgeInsets.symmetric(
       horizontal: 6.0,
       vertical: 3.0,
@@ -152,6 +153,7 @@ Padding switchTile(
 
 Row infoTile(String textContent) {
   return Row(
+    key: Key('info_tile_for_$textContent'),
     children: [
       Expanded(
         child: Padding(
