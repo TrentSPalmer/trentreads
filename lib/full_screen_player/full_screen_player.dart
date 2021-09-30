@@ -1,11 +1,12 @@
 import 'package:audio_service/audio_service.dart';
 import 'package:flutter/material.dart';
+
+import '../constants.dart';
+import '../pref_utils.dart';
+import 'full_player_play_pause.dart';
 import 'full_screen_ffwd_rwd.dart';
 import 'full_screen_player_seek_bar.dart';
 import 'full_screen_skip_previous_next.dart';
-import 'full_player_play_pause.dart';
-import '../constants.dart';
-import '../pref_utils.dart';
 
 class FullScreenPlayer extends StatefulWidget {
   @override

@@ -1,9 +1,9 @@
-import '../constants.dart';
-import '../download/episode_download.dart';
+import 'package:audio_service/audio_service.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:audio_service/audio_service.dart';
 
+import '../constants.dart';
+import '../download/episode_download.dart';
 import 'data_classes.dart';
 
 class DatabaseHelper {
@@ -106,12 +106,12 @@ class DatabaseHelper {
           .execute('''ALTER TABLE $_feedTable ADD COLUMN $_feedDesc TEXT''');
     }
     if (oldVersion < 10) {
-      await db
-          .execute('''ALTER TABLE $_episodeTable ADD COLUMN $_episodeDesc TEXT''');
+      await db.execute(
+          '''ALTER TABLE $_episodeTable ADD COLUMN $_episodeDesc TEXT''');
     }
     if (oldVersion < 11) {
-      await db
-          .execute('''ALTER TABLE $_feedTable ADD COLUMN $_feedImageDesc TEXT''');
+      await db.execute(
+          '''ALTER TABLE $_feedTable ADD COLUMN $_feedImageDesc TEXT''');
     }
   }
 

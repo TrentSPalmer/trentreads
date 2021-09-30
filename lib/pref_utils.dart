@@ -1,6 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
-import 'database/database_helper.dart';
+
 import 'constants.dart';
+import 'database/database_helper.dart';
 
 Future<void> markFeedsUpdated() async {
   int _currentTime = DateTime.now().millisecondsSinceEpoch ~/ 10000;
@@ -24,14 +25,16 @@ Future<bool> lastFeedUpdateExpired(int _fid) async {
 }
 
 String getHumanReadableDuration(Duration _d) {
-  int _totalSeconds =  _d.inSeconds.round();
+  int _totalSeconds = _d.inSeconds.round();
   int _seconds = _totalSeconds % 60;
-  String _secondsString = (_seconds < 10) ? "0${_seconds}" : _seconds.toString();
+  String _secondsString =
+      (_seconds < 10) ? "0${_seconds}" : _seconds.toString();
   if (_totalSeconds < 60) return "00:${_secondsString}";
 
   int _totalMinutes = ((_totalSeconds - _seconds) / 60).round();
   int _minutes = _totalMinutes % 60;
-  String _minutesString = (_minutes < 10) ? "0${_minutes}" : _minutes.toString();
+  String _minutesString =
+      (_minutes < 10) ? "0${_minutes}" : _minutes.toString();
   if (_totalMinutes < 60) return "$_minutesString:${_secondsString}";
 
   int _hours = ((_totalMinutes - _minutes) / 60).round();

@@ -1,5 +1,6 @@
 import 'package:audio_service/audio_service.dart';
 import 'package:flutter/material.dart';
+
 import '../database/data_classes.dart';
 import '../episode/episode_downloaders.dart';
 import '../pref_utils.dart';
@@ -9,7 +10,8 @@ Future<String> setCurrentEpisodeToPrevious() async {
   int _fid = await getCurrentFeedID();
   List<ScrollableEpisode> _episodeList = await getEpisodeList(_fid);
   int _currentIndex = _episodeList.indexWhere((item) => item.id == _eid);
-  int _previousIndex = (_currentIndex > 0) ? _currentIndex - 1 : _episodeList.length - 1;
+  int _previousIndex =
+      (_currentIndex > 0) ? _currentIndex - 1 : _episodeList.length - 1;
   int _previousEpisode = _episodeList[_previousIndex].id;
   String _previousEpisodeTitle = _episodeList[_previousIndex].title;
   await setCurrentEpisode(_previousEpisode);
@@ -27,10 +29,8 @@ IconButton fullScreenSkipPrevious(VoidCallback checkTitle) {
         }
       } else {
         setCurrentEpisodeToPrevious().then((String _eTitle) => {
-          setCurrentEpisodeByName(_eTitle).then((x) => {
-            checkTitle()
-          })
-        });
+              setCurrentEpisodeByName(_eTitle).then((x) => {checkTitle()})
+            });
       }
     },
     icon: Icon(Icons.skip_previous),
@@ -43,7 +43,8 @@ Future<String> setCurrentEpisodeToNext() async {
   int _fid = await getCurrentFeedID();
   List<ScrollableEpisode> _episodeList = await getEpisodeList(_fid);
   int _currentIndex = _episodeList.indexWhere((item) => item.id == _eid);
-  int _nextIndex = (_currentIndex < _episodeList.length - 1) ? _currentIndex + 1 : 0;
+  int _nextIndex =
+      (_currentIndex < _episodeList.length - 1) ? _currentIndex + 1 : 0;
   int _nextEpisode = _episodeList[_nextIndex].id;
   String _nextEpisodeTitle = _episodeList[_nextIndex].title;
   await setCurrentEpisode(_nextEpisode);
@@ -57,10 +58,8 @@ IconButton fullScreenSkipNext(VoidCallback checkTitle) {
         AudioService.skipToNext();
       } else {
         setCurrentEpisodeToNext().then((String _eTitle) => {
-          setCurrentEpisodeByName(_eTitle).then((x) => {
-            checkTitle()
-          })
-        });
+              setCurrentEpisodeByName(_eTitle).then((x) => {checkTitle()})
+            });
       }
     },
     icon: Icon(Icons.skip_next),

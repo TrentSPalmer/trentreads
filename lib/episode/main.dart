@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import '../episode/episode_downloaders.dart';
-import 'episode_item_row_mixin.dart';
-import '../database/data_classes.dart';
+
 import '../constants.dart';
+import '../database/data_classes.dart';
+import '../episode/episode_downloaders.dart';
 import '../mini_player/mini_player.dart';
 import '../pref_utils.dart';
+import 'episode_item_row_mixin.dart';
 
 class Episode extends StatefulWidget {
   final String title;

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import '../lib/main.dart';
+
 import '../lib/home/feeds.dart';
+import '../lib/main.dart';
 import 'about_feed_load_test.dart';
 
 void settingScreenLoadTest(String _testDesc) =>

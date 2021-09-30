@@ -1,10 +1,12 @@
 import 'dart:io';
 import 'dart:math';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
+import 'package:path_provider/path_provider.dart';
+
 import '../database/database_helper.dart';
 import '../pref_utils.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'utils.dart';
 
 Future<String> getEpisodeMP3(String _mp3Url, String _mp3File, int _mp3FileSize,

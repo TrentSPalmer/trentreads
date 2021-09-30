@@ -1,9 +1,10 @@
 import 'package:audio_service/audio_service.dart';
 import 'package:flutter/material.dart';
-import '../constants.dart';
-import '../pref_utils.dart';
 import 'package:rxdart/rxdart.dart';
+
+import '../constants.dart';
 import '../player/seek_bar.dart';
+import '../pref_utils.dart';
 
 class MediaState {
   final MediaItem? mediaItem;
@@ -36,11 +37,15 @@ class ItemSeekBar extends StatelessWidget {
       stream: AudioService.runningStream,
       builder: (context, snapshot) {
         if (snapshot.connectionState != ConnectionState.active) {
-          return Container(height: (this.fullScreen) ? 48.0 : 0,);
+          return Container(
+            height: (this.fullScreen) ? 48.0 : 0,
+          );
         }
         final running = snapshot.data ?? false;
         if (!running) {
-          return Container(height: (this.fullScreen) ? 48.0 : 0,);
+          return Container(
+            height: (this.fullScreen) ? 48.0 : 0,
+          );
         } else {
           return StreamBuilder<MediaState>(
             stream: _mediaStateStream,
@@ -49,7 +54,9 @@ class ItemSeekBar extends StatelessWidget {
               String _t = mediaState?.mediaItem?.title ?? '';
               String _a = mediaState?.mediaItem?.album ?? '';
               if (_t != episodeTitle || _a != feedTitle) {
-                return Container(height: (this.fullScreen) ? 48.0 : 0,);
+                return Container(
+                  height: (this.fullScreen) ? 48.0 : 0,
+                );
               } else {
                 Duration duration =
                     mediaState?.mediaItem?.duration ?? Duration.zero;

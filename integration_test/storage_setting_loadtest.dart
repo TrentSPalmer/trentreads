@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:storage_info/storage_info.dart';
 import 'package:trentreads/download/utils.dart';
-import '../lib/main.dart';
+
 import '../lib/home/feeds.dart';
+import '../lib/main.dart';
 import 'about_feed_load_test.dart';
 import 'setting_screen_loadtest.dart';
 
@@ -38,10 +39,12 @@ Future<void> verifyCorrectStorageDeviceSelected(
     double _inFree = await StorageInfo.getStorageFreeSpaceInGB;
     if (_exFree > _inFree) {
       Finder externalStorageDeviceRadioListTileFinder =
-      find.byKey(Key('external_storage_device_radio_list_tile'));
-      RadioListTile externalRadioListTile = externalStorageDeviceRadioListTileFinder
-          .evaluate().single.widget as RadioListTile;
-      expect(externalRadioListTile.value.toString() == "StorageDev.external", true);
+          find.byKey(Key('external_storage_device_radio_list_tile'));
+      RadioListTile externalRadioListTile =
+          externalStorageDeviceRadioListTileFinder.evaluate().single.widget
+              as RadioListTile;
+      expect(externalRadioListTile.value.toString() == "StorageDev.external",
+          true);
     } else {
       await verifyInternalStorageDeviceSelected(tester);
     }
@@ -54,7 +57,9 @@ Future<void> verifyInternalStorageDeviceSelected(WidgetTester tester) async {
   Finder innerStorageDeviceRadioListTileFinder =
       find.byKey(Key('internal_storage_device_radio_list_tile'));
   RadioListTile internalRadioListTile = innerStorageDeviceRadioListTileFinder
-      .evaluate().single.widget as RadioListTile;
+      .evaluate()
+      .single
+      .widget as RadioListTile;
   expect(internalRadioListTile.value.toString() == "StorageDev.internal", true);
 }
 

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import '../feed_options/feed_options.dart';
-import '../item_image/item_image.dart';
+
 import '../constants.dart';
 import '../database/data_classes.dart';
 import '../episode/main.dart';
+import '../feed_options/feed_options.dart';
+import '../item_image/item_image.dart';
 import 'func_mixin.dart';
 
 abstract class FeedItemRowMixin<T extends StatefulWidget> extends FuncMixin<T> {

@@ -1,5 +1,7 @@
 import 'dart:io';
+
 import 'package:flutter/material.dart';
+
 import '../download/images.dart';
 
 class ItemImage extends StatefulWidget {
@@ -53,7 +55,9 @@ class ItemImageState extends State<ItemImage> {
       _resetImageUrl();
     }
     if (_imageUrl == 'none' && _localImageFile == 'none') {
-      return Container(key: Key(imageKey),);
+      return Container(
+        key: Key(imageKey),
+      );
     } else {
       if (_localImageFile == 'none') {
         return Image.network(

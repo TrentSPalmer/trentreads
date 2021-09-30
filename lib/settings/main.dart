@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'global_download_settings.dart';
+
+import '../about/main.dart';
 import '../constants.dart';
 import '../widgets.dart';
-import '../about/main.dart';
+import 'global_download_settings.dart';
 import 'network.dart';
 import 'storage.dart';
 

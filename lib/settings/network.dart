@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../pref_utils.dart';
+
 import '../constants.dart';
+import '../pref_utils.dart';
 import '../widgets.dart';
 
 class NetworkSettings extends StatefulWidget {
@@ -35,7 +36,7 @@ class NetworkSettingsState extends State<NetworkSettings> {
     return Scaffold(
       backgroundColor: appColors.peacockBlue,
       appBar: AppBar(
-        title: Text('Global Download Settings'),
+        title: Text('Network Settings'),
       ),
       body: Column(
         children: [

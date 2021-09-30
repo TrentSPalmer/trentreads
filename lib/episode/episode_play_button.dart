@@ -1,9 +1,10 @@
 import 'package:audio_service/audio_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
+import '../constants.dart';
 import '../player/audio_player.dart';
 import '../pref_utils.dart';
-import '../constants.dart';
 
 class EpisodePlayButton extends StatefulWidget {
   final int episodeID;

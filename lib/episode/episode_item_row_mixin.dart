@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+
+import '../constants.dart';
+import '../database/data_classes.dart';
 import '../episode/description.dart';
 import '../item_image/item_image.dart';
-import 'episode_play_button.dart';
-import 'item_seek_bar.dart';
-import 'func_mixin.dart';
-import '../database/data_classes.dart';
-import '../constants.dart';
 import '../pref_utils.dart';
+import 'episode_play_button.dart';
+import 'func_mixin.dart';
+import 'item_seek_bar.dart';
 
 abstract class EpisodeItemRowMixin<T extends StatefulWidget>
     extends FuncMixin<T> {

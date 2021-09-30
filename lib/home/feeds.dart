@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import '../database/data_classes.dart';
-import 'feed_item_row_mixin.dart';
+
 import '../constants.dart';
-import '../pref_utils.dart';
+import '../database/data_classes.dart';
 import '../mini_player/mini_player.dart';
+import '../pref_utils.dart';
 import '../settings/main.dart';
+import 'feed_item_row_mixin.dart';
 
 class FeedWidget extends StatefulWidget {
   FeedWidget({

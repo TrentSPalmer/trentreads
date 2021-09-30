@@ -1,11 +1,13 @@
 import 'dart:io';
+
 import 'package:flutter/material.dart';
-import '../download/images.dart';
-import '../database/data_classes.dart';
 import 'package:flutter_html/flutter_html.dart';
-import '../constants.dart';
 import 'package:html/dom.dart' as dom;
 import 'package:url_launcher/url_launcher.dart';
+
+import '../constants.dart';
+import '../database/data_classes.dart';
+import '../download/images.dart';
 
 class EpisodeItemDesc extends StatefulWidget {
   final ScrollableEpisode episode;

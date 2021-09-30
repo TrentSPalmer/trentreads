@@ -1,9 +1,10 @@
 import 'package:audio_service/audio_service.dart';
 import 'package:flutter/material.dart';
-import '../full_screen_player/full_screen_player.dart';
-import '../pref_utils.dart';
+
 import '../constants.dart';
+import '../full_screen_player/full_screen_player.dart';
 import '../player/audio_player.dart';
+import '../pref_utils.dart';
 
 class MiniPlayer extends StatefulWidget {
   @override

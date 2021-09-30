@@ -46,5 +46,4 @@ abstract class FuncMixin<T extends StatefulWidget> extends State<T> {
             })
         .then((value) => {checkFeedsExpired()});
   }
-
 }

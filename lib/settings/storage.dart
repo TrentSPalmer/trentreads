@@ -1,12 +1,13 @@
 import 'dart:io';
-import '../widgets.dart';
 
+import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:storage_info/storage_info.dart';
+
+import '../constants.dart';
 import '../download/utils.dart';
 import '../pref_utils.dart';
-import '../constants.dart';
-import 'package:storage_info/storage_info.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:flutter/material.dart';
+import '../widgets.dart';
 
 class StorageSetting extends StatefulWidget {
   @override

@@ -1,8 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:audio_service/audio_service.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
-import 'home/feeds.dart';
+
 import 'constants.dart';
+import 'home/feeds.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,7 +1,7 @@
 import 'dart:async';
+
 import 'package:audio_service/audio_service.dart';
 import 'package:just_audio/just_audio.dart';
-
 
 class Seeker {
   final AudioPlayer player;
@@ -11,11 +11,11 @@ class Seeker {
   bool _running = false;
 
   Seeker(
-      this.player,
-      this.positionInterval,
-      this.stepInterval,
-      this.mediaItem,
-      );
+    this.player,
+    this.positionInterval,
+    this.stepInterval,
+    this.mediaItem,
+  );
 
   start() async {
     _running = true;

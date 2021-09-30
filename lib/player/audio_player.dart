@@ -1,10 +1,12 @@
 import 'dart:async';
+
 import 'package:audio_service/audio_service.dart';
 import 'package:audio_session/audio_session.dart';
-import '../player/media_library.dart';
 import 'package:just_audio/just_audio.dart';
-import 'seeker.dart';
+
+import '../player/media_library.dart';
 import '../pref_utils.dart';
+import 'seeker.dart';
 
 void audioPlayerTaskEntrypoint() async {
   AudioServiceBackground.run(() => AudioPlayerTask());
@@ -38,15 +40,17 @@ class AudioPlayerTask extends BackgroundAudioTask {
         _player.currentIndexStream.listen((int? _streamIndex) async {
       List<MediaItem>? _playingQueue = await AudioServiceBackground.queue;
       if (_streamIndex != null && _playingQueue != null && _streamIndex > -1) {
-        int _oldM = _streamIndex > 0 ? _streamIndex - 1 : _playingQueue.length - 1;
+        int _oldM =
+            _streamIndex > 0 ? _streamIndex - 1 : _playingQueue.length - 1;
         MediaItem _mI = await getCurrentMediaItem();
         if (areMediaItemsEqual(_mI, _playingQueue[_oldM])) {
           await updatePSeconds(
               0, _playingQueue[_oldM].title, _playingQueue[_oldM].album);
-          await updateCurrentEpisode(
-              _playingQueue[_streamIndex].title, _playingQueue[_streamIndex].album);
+          await updateCurrentEpisode(_playingQueue[_streamIndex].title,
+              _playingQueue[_streamIndex].album);
           int _pS = await getPSecondsFromNames(
-              _playingQueue[_streamIndex].album, _playingQueue[_streamIndex].title);
+              _playingQueue[_streamIndex].album,
+              _playingQueue[_streamIndex].title);
           await _player.seek(Duration(seconds: _pS));
         }
       }

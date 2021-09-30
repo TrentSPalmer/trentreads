@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+
+import '../constants.dart';
 import '../database/database_helper.dart';
 import '../pref_utils.dart';
 import '../widgets.dart';
 import 'util.dart';
-import '../constants.dart';
 
 class GlobalDownLoadSettings extends StatefulWidget {
   @override

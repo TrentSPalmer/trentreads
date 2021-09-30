@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import '../lib/main.dart';
-import '../lib/home/feeds.dart';
 import 'package:flutter_test/flutter_test.dart';
+
+import '../lib/home/feeds.dart';
+import '../lib/main.dart';
 
 void aboutFeedsLoadTest(String _testDesc) =>
     testWidgets(_testDesc, (tester) async {
@@ -31,7 +32,8 @@ Future<void> clickBackButton(WidgetTester tester) async {
   await tester.pumpAndSettle();
 }
 
-Future<void> testFeedImageDesc(int i, WidgetTester tester, String _feedImageDesc) async {
+Future<void> testFeedImageDesc(
+    int i, WidgetTester tester, String _feedImageDesc) async {
   Finder feediImageDescFinder = find.byKey(Key('feed_image_description'));
   expect(feediImageDescFinder, findsOneWidget);
   Html feediImageDesc = feediImageDescFinder.evaluate().single.widget as Html;

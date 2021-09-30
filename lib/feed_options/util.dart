@@ -1,10 +1,12 @@
+import 'dart:io';
+
 import 'package:audio_service/audio_service.dart';
+import 'package:path_provider/path_provider.dart';
+
 import '../database/data_classes.dart';
+import '../database/database_helper.dart';
 import '../download/episode_download.dart';
 import '../download/utils.dart';
-import '../database/database_helper.dart';
-import 'package:path_provider/path_provider.dart';
-import 'dart:io';
 
 Future<int> getNumDownLoadedEpisodes(_fid) async {
   int _result = 0;

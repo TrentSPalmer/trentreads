@@ -1,11 +1,12 @@
-import 'package:html/dom.dart' as dom;
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:html/dom.dart' as dom;
+import 'package:url_launcher/url_launcher.dart';
+
+import '../constants.dart';
+import '../database/database_helper.dart';
 import '../feed_options/download_confirmation.dart';
 import '../feed_options/util.dart';
-import 'package:url_launcher/url_launcher.dart';
-import '../database/database_helper.dart';
-import '../constants.dart';
 import '../widgets.dart';
 
 class FeedOptions extends StatefulWidget {

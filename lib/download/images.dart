@@ -1,8 +1,10 @@
 import 'dart:io';
 import 'dart:math';
+
 import 'package:flutter_downloader/flutter_downloader.dart';
-import 'utils.dart';
 import 'package:path_provider/path_provider.dart';
+
+import 'utils.dart';
 
 Future<String> getLocalImageFile(
     String _imageUrl, String _imageFile, int _imgFileSize) async {

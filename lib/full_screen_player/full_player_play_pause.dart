@@ -1,5 +1,6 @@
 import 'package:audio_service/audio_service.dart';
 import 'package:flutter/material.dart';
+
 import '../mini_player/mini_player.dart';
 
 Expanded FullPlayerPlayPause() {
