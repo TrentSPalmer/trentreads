@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 
 import 'about_feed_load_test.dart';
+import 'about_screen_load_test.dart';
 import 'download_setting_loadtest.dart';
 import 'feedlist_needs_refreshing.dart';
 import 'feedlist_reloads_correctly_test.dart';
@@ -26,6 +27,7 @@ void main() {
     storageSettingLoadTest("Storage Setting Load Test");
     downloadSettingLoadTest("DownLoad Setting Load Test");
     networkSettingLoadTest("Network Setting Load Test");
+    aboutScreenLoadTest("About Screen Load Test");
     feedListReloadsCorrectly('Feedlist Reloads Correctly Test');
   });
 }
