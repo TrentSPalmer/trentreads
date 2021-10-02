@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
-import '../lib/database/data_classes.dart';
-import '../lib/home/feeds.dart';
 
+import '../lib/database/data_classes.dart';
 import '../lib/database/database_helper.dart';
+import '../lib/home/feeds.dart';
 import '../lib/main.dart';
 
 void feedListReloadsCorrectly(String _testDesc) =>

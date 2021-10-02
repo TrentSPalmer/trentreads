@@ -1,17 +1,16 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import '../lib/home/feed_downloaders.dart';
 import '../lib/home/feeds.dart';
 import '../lib/main.dart';
 import '../lib/pref_utils.dart';
 import 'app_test.dart';
 
-
 void feedListNeedsRefreshing(String _testDesc) =>
     testWidgets(_testDesc, (tester) async {
       await tester.pumpWidget(MyApp());
-      final FeedState myFeedState =
-          tester.state(find.byType(FeedWidget));
+      final FeedState myFeedState = tester.state(find.byType(FeedWidget));
       expect(myFeedState.feedList.length == 0, true);
 
       int i = 0;

@@ -16,7 +16,7 @@ class TrentReadsAboutPage extends StatelessWidget {
         title: Text('About TrentReads'),
       ),
       body: SingleChildScrollView(
-          child: aboutHtml(),
+        child: aboutHtml(),
       ),
     );
   }
