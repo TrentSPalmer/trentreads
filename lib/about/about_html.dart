@@ -1,4 +1,14 @@
-<!DOCTYPE html>
+import 'package:flutter_html/flutter_html.dart';
+import 'package:html/dom.dart' as dom;
+import 'package:url_launcher/url_launcher.dart';
+
+Future<void> _launch(String url) async {
+  if (await canLaunch(url)) await launch(url);
+}
+
+Html aboutHtml() {
+  return Html(
+    data: """<!DOCTYPE html>
 <html lang="en">
   <head>
     <style>
@@ -20,13 +30,6 @@
   <body>
     <div style="display: flex; justify-content: space-around;">
       <div style="max-width: 1000px;">
-        <p>
-        <a href="https://play.google.com/store/apps/details?id=org.trentpalmer.trentreads" target="_blank" rel="noopener noreferrer">
-          <img src="https://github.com/TrentSPalmer/trentreads/raw/master/trent_reads_feature_graphic.png" alt="Trent Reads Feature Graphic" style="max-width:100%;">
-        </a>
-        </p>
-
-        <hr>
         <h2>About</h2>
 
         <p>
@@ -38,9 +41,6 @@
         <a href="https://www.djangoproject.com/"rel="noopener noreferrer" target="_blank">Django web application</a>
         I built for hosting public domain audio books I read, serialized as podcasts.
         </p>
-
-        <hr>
-        <img src="https://github.com/TrentSPalmer/trentreads/raw/master/screenshots/Screenshot_20210923-015633_trentreads.png" alt="Screen Shot" style="max-width:100%;">
 
         <hr>
         <h2>Tools</h2>
@@ -61,9 +61,6 @@
           I record in between naps and cigars, in Audacity on a refurb Dell Optiplex Running Debian 11 on a software raid1 mirror, using a
           <a href="http://www.samsontech.com/samson/products/microphones/usb-microphones/meteormic/" rel="noopener noreferrer" target="_blank">Samson Meteor USB microphone</a>.
         </p>
-
-        <hr>
-        <img src="https://github.com/TrentSPalmer/trentreads/raw/master/screenshots/Screenshot_20210923-015815_trentreads.png" alt="Screen Shot" style="max-width:100%;">
         <hr>
 
         <h2>Hire Me, Call Me</h2>
@@ -83,4 +80,10 @@
       </div>
     </div>
   </body>
-</html>
+</html>""",
+    onLinkTap: (String? url, RenderContext context,
+        Map<String, String> attributes, dom.Element? element) {
+      if (url != null) _launch(url);
+    },
+  );
+}

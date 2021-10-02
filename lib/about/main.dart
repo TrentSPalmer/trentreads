@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trentreads/about/about.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../constants.dart';
@@ -28,6 +29,7 @@ class AboutTrentReads extends StatelessWidget {
       ),
       body: Column(
         children: [
+          navTile(context, TrentReadsAboutPage(), "About TrentReads"),
           functionTile(
             "License",
             showLicense,
