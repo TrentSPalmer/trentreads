@@ -7,8 +7,11 @@ Future<void> _launch(String url) async {
 }
 
 Html aboutHtml() {
-  return Html(
-    data: """<!DOCTYPE html>
+  return aboutTrentReads;
+}
+
+Html aboutTrentReads = Html(
+  data: """<!DOCTYPE html>
 <html lang="en">
   <head>
     <style>
@@ -81,9 +84,8 @@ Html aboutHtml() {
     </div>
   </body>
 </html>""",
-    onLinkTap: (String? url, RenderContext context,
-        Map<String, String> attributes, dom.Element? element) {
-      if (url != null) _launch(url);
-    },
-  );
-}
+  onLinkTap: (String? url, RenderContext context,
+      Map<String, String> attributes, dom.Element? element) {
+    if (url != null) _launch(url);
+  },
+);

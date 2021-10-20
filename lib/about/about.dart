@@ -1,9 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:trentreads/about/about_html.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import '/about/about_html.dart';
 import '../constants.dart';
 
 class TrentReadsAboutPage extends StatelessWidget {

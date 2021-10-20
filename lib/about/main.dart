@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:trentreads/about/about.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '/about/about.dart';
 import '../constants.dart';
 import '../widgets.dart';
 
@@ -34,7 +34,10 @@ class AboutTrentReads extends StatelessWidget {
             "License",
             showLicense,
           ),
-          functionTile("Other Licenses", showOtherLicenses),
+          functionTile(
+            "Other Licenses",
+            showOtherLicenses,
+          ),
           Expanded(
             child: Container(),
           ),

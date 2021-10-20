@@ -4,6 +4,7 @@ import 'constants.dart';
 
 Padding functionTile(String textContent, VoidCallback _onTap) {
   return Padding(
+    key: Key('func_tile_for_$textContent'),
     padding: EdgeInsets.symmetric(
       horizontal: 6.0,
       vertical: 3.0,
