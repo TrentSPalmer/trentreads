@@ -48,11 +48,9 @@ abstract class FeedItemRowMixin<T extends StatefulWidget> extends FuncMixin<T> {
           color: Colors.transparent,
           child: InkWell(
             onTap: () {
-              goToFeedOptions(
+              goToEpisodeScreen(
                 scrollableFeed.title,
-                scrollableFeed.desc,
                 scrollableFeed.id,
-                scrollableFeed.imageDesc,
               );
             },
             child: Padding(
@@ -90,13 +88,15 @@ abstract class FeedItemRowMixin<T extends StatefulWidget> extends FuncMixin<T> {
                     scale: 2,
                     child: IconButton(
                       onPressed: () {
-                        goToEpisodeScreen(
+                        goToFeedOptions(
                           scrollableFeed.title,
+                          scrollableFeed.desc,
                           scrollableFeed.id,
+                          scrollableFeed.imageDesc,
                         );
                       },
-                      icon: Icon(Icons.arrow_right),
-                      iconSize: 32,
+                      icon: Icon(Icons.info_outline_rounded),
+                      iconSize: 24,
                       color: Colors.black87,
                       padding: EdgeInsets.zero,
                     ),
