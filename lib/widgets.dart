@@ -2,6 +2,27 @@ import 'package:flutter/material.dart';
 
 import 'constants.dart';
 
+Column loadingSpinner() {
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            width: 200.0,
+            height: 200.0,
+            child: CircularProgressIndicator(
+              color: appColors.candyApple,
+              strokeWidth: 16.0,
+            ),
+          )
+        ],
+      )
+    ],
+  );
+}
+
 Padding functionTile(String textContent, VoidCallback _onTap) {
   return Padding(
     key: Key('func_tile_for_$textContent'),

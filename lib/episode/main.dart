@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trentreads/widgets.dart';
 
 import '../constants.dart';
 import '../database/data_classes.dart';
@@ -87,7 +88,9 @@ class EpisodeState extends EpisodeItemRowMixin<Episode> {
         body: Column(
           children: [
             Expanded(
-              child: _buildDataList(),
+              child: (episodeList.length > 0)
+                  ? _buildDataList()
+                  : loadingSpinner(),
             ),
             if (active) ...[
               MiniPlayer(),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trentreads/widgets.dart';
 
 import '../constants.dart';
 import '../database/data_classes.dart';
@@ -72,9 +73,11 @@ class FeedState extends FeedItemRowMixin<FeedWidget> {
       body: Column(
         children: [
           Expanded(
-            child: Container(
-              child: _buildDataList(),
-            ),
+            child: (feedList.length > 0)
+                ? Container(
+                    child: _buildDataList(),
+                  )
+                : loadingSpinner(),
           ),
           if (active) ...[
             MiniPlayer(),
