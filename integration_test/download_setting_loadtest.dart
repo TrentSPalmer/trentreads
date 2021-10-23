@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:trentreads/pref_utils.dart';
+import '../lib/pref_utils.dart';
 
 import '../lib/database/database_helper.dart';
 import '../lib/home/feeds.dart';

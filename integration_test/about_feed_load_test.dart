@@ -1,9 +1,15 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:storage_info/storage_info.dart';
 
+import '../lib/download/utils.dart';
 import '../lib/home/feeds.dart';
 import '../lib/main.dart';
+import 'setting_screen_loadtest.dart';
 
 void aboutFeedsLoadTest(String _testDesc) =>
     testWidgets(_testDesc, (tester) async {
@@ -19,11 +25,50 @@ void aboutFeedsLoadTest(String _testDesc) =>
       int end = myFeedState.feedList.length;
       for (int i = 0; i < end; i++) {
         await findAndTapAboutFeedInkWell(i, tester);
+        await verifyAppBarTitle(
+            tester, "Options: ${myFeedState.feedList[i].title}");
         await testFeedDesc(i, tester, myFeedState.feedList[i].desc);
         await testFeedImageDesc(i, tester, myFeedState.feedList[i].imageDesc);
+        await testFeedLocalImage(tester, myFeedState.feedList[i].imageFileName);
         await clickBackButton(tester);
       }
     });
+
+Future<void> testFeedLocalImage(WidgetTester tester, String _fileName) async {
+  Finder feediLocalImageFinder = find.byKey(Key('feed_local_image'));
+  expect(feediLocalImageFinder, findsOneWidget);
+  Image feedILocalImage =
+      feediLocalImageFinder.evaluate().single.widget as Image;
+  String _sDirPath = await getSDir();
+  String feedILocalImageImage = feedILocalImage.image.toString();
+  String feedILocalImagePath =
+      'FileImage("${_sDirPath}/images/${_fileName}", scale: 1.0)';
+  // print(feedILocalImageImage); print(feedILocalImagePath);
+  expect(feedILocalImageImage == feedILocalImagePath, true);
+}
+
+Future<String> getSDir() async {
+  String _sDirPath = await getSelectedStorageDirectory();
+  if (_sDirPath != "not_available") {
+    return "${_sDirPath}files";
+  } else {
+    if (!(await multipleStorageDirs())) {
+      Directory? _sDir = await getExternalStorageDirectory();
+      return (_sDir != null) ? "${_sDir.path}" : "not_available";
+    } else {
+      List<Directory>? _storageDirs = await getExternalStorageDirectories();
+      if (_storageDirs == null) {
+        return "not_available";
+      } else {
+        double _exFree = await StorageInfo.getExternalStorageFreeSpaceInGB;
+        double _inFree = await StorageInfo.getStorageFreeSpaceInGB;
+        return (_exFree > _inFree)
+            ? "${_storageDirs[1].path}"
+            : "${_storageDirs[0].path}";
+      }
+    }
+  }
+}
 
 Future<void> clickBackButton(WidgetTester tester) async {
   Finder backButtonFinder = find.byType(BackButton);
@@ -56,7 +101,8 @@ Future<void> findAndTapAboutFeedInkWell(int i, WidgetTester tester) async {
     matching: find.byType(IconButton),
   );
   expect(infoIconIFinder, findsOneWidget);
-  IconButton infoIIconButton = infoIconIFinder.evaluate().single.widget as IconButton;
+  IconButton infoIIconButton =
+      infoIconIFinder.evaluate().single.widget as IconButton;
   await tester.tap(find.byWidget(infoIIconButton));
   await tester.pumpAndSettle();
 }

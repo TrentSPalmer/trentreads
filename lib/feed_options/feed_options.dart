@@ -76,14 +76,16 @@ class FeedOptionsState extends State<FeedOptions> {
 
   void toggleShouldDownLoad(bool shouldDL) {
     final DatabaseHelper dbHelper = DatabaseHelper.instance;
-    dbHelper.markShouldDownLoadFeed(widget.feed.id, shouldDL).then((bool _x) => {
-          if (mounted)
-            {
-              setState(() {
-                shouldDownLoad = shouldDL;
-              })
-            }
-        });
+    dbHelper
+        .markShouldDownLoadFeed(widget.feed.id, shouldDL)
+        .then((bool _x) => {
+              if (mounted)
+                {
+                  setState(() {
+                    shouldDownLoad = shouldDL;
+                  })
+                }
+            });
   }
 
   Future<void> getShouldDownLoad() async {
@@ -150,12 +152,20 @@ class FeedOptionsState extends State<FeedOptions> {
                   child: Column(
                     children: [
                       if (_localImageFile == 'none' && _imageUrl != 'none') ...[
-                        Image.network(_imageUrl),
+                        Image.network(
+                          _imageUrl,
+                          key: Key('feed_network_image'),
+                        ),
                       ],
                       if (_localImageFile != 'none' && _imageUrl == 'none') ...[
-                        Image.file(File(_localImageFile)),
+                        Image.file(
+                          File(_localImageFile),
+                          key: Key('feed_local_image'),
+                        ),
                       ],
-                      SizedBox(height: 20.0,),
+                      SizedBox(
+                        height: 20.0,
+                      ),
                       Text(
                         widget.feed.desc,
                         key: Key('feed_description'),

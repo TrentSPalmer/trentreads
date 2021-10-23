@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:storage_info/storage_info.dart';
-import 'package:trentreads/download/utils.dart';
 
+import '../lib/download/utils.dart';
 import '../lib/home/feeds.dart';
 import '../lib/main.dart';
 import 'about_feed_load_test.dart';
