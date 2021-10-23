@@ -50,6 +50,13 @@ Future<void> testFeedDesc(int i, WidgetTester tester, String _feedDesc) async {
 Future<void> findAndTapAboutFeedInkWell(int i, WidgetTester tester) async {
   Finder inkWelliFinder = find.byKey(Key('inkwell_$i'));
   expect(inkWelliFinder, findsOneWidget);
-  await tester.tap(find.byKey(Key('inkwell_$i')));
+  Container feedInkWell = inkWelliFinder.evaluate().single.widget as Container;
+  Finder infoIconIFinder = find.descendant(
+    of: find.byWidget(feedInkWell),
+    matching: find.byType(IconButton),
+  );
+  expect(infoIconIFinder, findsOneWidget);
+  IconButton infoIIconButton = infoIconIFinder.evaluate().single.widget as IconButton;
+  await tester.tap(find.byWidget(infoIIconButton));
   await tester.pumpAndSettle();
 }

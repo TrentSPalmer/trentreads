@@ -19,16 +19,12 @@ abstract class FeedItemRowMixin<T extends StatefulWidget> extends FuncMixin<T> {
     );
   }
 
-  Future<void> goToFeedOptions(
-      String _title, String _desc, int _fid, String _imageDesc) async {
+  Future<void> goToFeedOptions(ScrollableFeed _feed) async {
     await Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => FeedOptions(
-          feedTitle: _title,
-          feedDesc: _desc,
-          feedID: _fid,
-          feedImageDesc: _imageDesc,
+          feed: _feed,
         ),
       ),
     );
@@ -89,10 +85,7 @@ abstract class FeedItemRowMixin<T extends StatefulWidget> extends FuncMixin<T> {
                     child: IconButton(
                       onPressed: () {
                         goToFeedOptions(
-                          scrollableFeed.title,
-                          scrollableFeed.desc,
-                          scrollableFeed.id,
-                          scrollableFeed.imageDesc,
+                          scrollableFeed,
                         );
                       },
                       icon: Icon(Icons.info_outline_rounded),

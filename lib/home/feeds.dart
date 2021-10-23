@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trentreads/widgets.dart';
+import '../widgets.dart';
 
 import '../constants.dart';
 import '../database/data_classes.dart';
