@@ -9,6 +9,17 @@ import '../constants.dart';
 import '../database/data_classes.dart';
 import '../download/images.dart';
 
+String getHtml(String desc) {
+  int _indA = desc.indexOf('<p>');
+  String _A = desc.substring(_indA);
+  int _indB = _A.substring(3).indexOf('<p>') + 3;
+  String _summary = _A.substring(0, _indB);
+  String _B = _A.substring(_indB);
+  int _indC = _B.substring(3).indexOf('<p>') + 3;
+  String _C = _B.substring(_indC);
+  return "$_summary$_C";
+}
+
 class EpisodeItemDesc extends StatefulWidget {
   final ScrollableEpisode episode;
 
@@ -48,17 +59,6 @@ class EpisodeItemDescState extends State<EpisodeItemDesc> {
 
   Future<void> _launch(String url) async {
     if (await canLaunch(url)) await launch(url);
-  }
-
-  String getHtml(String desc) {
-    int _indA = desc.indexOf('<p>');
-    String _A = desc.substring(_indA);
-    int _indB = _A.substring(3).indexOf('<p>') + 3;
-    String _summary = _A.substring(0, _indB);
-    String _B = _A.substring(_indB);
-    int _indC = _B.substring(3).indexOf('<p>') + 3;
-    String _C = _B.substring(_indC);
-    return "$_summary$_C";
   }
 
   @override

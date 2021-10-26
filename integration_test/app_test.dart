@@ -10,6 +10,7 @@ import 'home_screen_load_test.dart';
 import 'network_setting_loadtest.dart';
 import 'setting_screen_loadtest.dart';
 import 'storage_setting_loadtest.dart';
+import 'episode_screen_load_test.dart';
 
 final String feedsLastUpdatedAt = 'feedsLastUpdatedAt';
 
@@ -21,6 +22,7 @@ void main() {
     binding.framePolicy = LiveTestWidgetsFlutterBindingFramePolicy.fullyLive;
 
     homeScreenLoadTest('HomeScreen Load Test');
+    episodeScreenLoadTest('EpisodeScreen Load Test');
     feedListNeedsRefreshing('FeedList Needs Refreshing Test');
     aboutFeedsLoadTest("About Feeds Load Test");
     settingScreenLoadTest("Setting Screen Load Test");
